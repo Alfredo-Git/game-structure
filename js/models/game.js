@@ -5,6 +5,12 @@ function Game(canvasElement) {
 
   this.intervalId = undefined;
   this.bg = new Background(this.ctx);
+  this.setListener();
+}
+
+Game.prototype.setListener = function(){
+  document.addEventListener("keydown", this.player.onKeyDown.bind(this.player));
+  document.addEventListener("keyup", this.player.onKeyUp.bind(this));
 }
 
 Game.prototype.start = function() {
@@ -24,6 +30,7 @@ Game.prototype.drawAll = function(action) {
 
 Game.prototype.moveAll = function(action) {  
   this.bg.move();
+  this.player.move();
 };
 
 Game.prototype.checkGameOver = function() {
