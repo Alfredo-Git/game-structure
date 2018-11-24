@@ -1,6 +1,8 @@
 function Game(canvasElement) {
   this.ctx = canvasElement.getContext("2d");
 
+  this.player = new Player(this.ctx);
+
   this.intervalId = undefined;
   this.bg = new Background(this.ctx);
 }
@@ -16,6 +18,8 @@ Game.prototype.start = function() {
 
 Game.prototype.drawAll = function(action) {
     this.bg.draw();
+    this.player.draw();
+  
 };
 
 Game.prototype.moveAll = function(action) {  
