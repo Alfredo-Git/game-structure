@@ -1,4 +1,5 @@
 var DRAW_INTERVAL_MS = 1000 / 60;
+var OBSTACLE_INTERVAL = 50;
 
 var KEY_UP = 38;
 var KEY_RIGHT = 39;

@@ -28,11 +28,7 @@ Player.prototype.draw = function() {
    this.x,
    this.y,
    this.w, 
-   this.h);
-  
-   
-
-    
+   this.h);  
 };
 
 Player.prototype.move = function() {
@@ -46,9 +42,13 @@ Player.prototype.move = function() {
     this.vy = 0;
   }
 
+
 };
 
 Player.prototype.animate = function() {
+  if (this.isJumping()){
+    return this.img.frameIndex = 2;
+  }
   if (++this.frameCounter % 10 === 0 ) {
     this.frameCounter = 0 ;
     if (this.img.frameIndex === this.img.frames - 1){
@@ -60,11 +60,16 @@ Player.prototype.animate = function() {
 };
 
 Player.prototype.jump = function() {
-  this.vy -= 10;
-
+  if (!this.isJumping()){
+    this.vy -= 10;
+  
+  }
+  
 };
 
 Player.prototype.isJumping = function() {
+  return this.y < this.y0;
+  
 };
 
 Player.prototype.onKeyDown = function(event) {
@@ -86,5 +91,13 @@ Player.prototype.onKeyDown = function(event) {
 };
 
 Player.prototype.onKeyUp = function(event) {
-  console.log(event)
+  switch (event.keyCode) {
+    
+    case KEY_RIGHT:
+      this.vx = 0;
+      break;
+    case KEY_LEFT:
+      this.vx = 0;
+      break;
+  }
 };
