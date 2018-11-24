@@ -2,6 +2,7 @@ function Game(canvasElement) {
   this.ctx = canvasElement.getContext("2d");
 
   this.intervalId = undefined;
+  this.bg = new Background(this.ctx);
 }
 
 Game.prototype.start = function() {
@@ -14,6 +15,7 @@ Game.prototype.start = function() {
 };
 
 Game.prototype.drawAll = function(action) {
+    this.bg.draw();
 };
 
 Game.prototype.moveAll = function(action) {  
