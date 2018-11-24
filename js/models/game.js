@@ -19,6 +19,7 @@ Game.prototype.drawAll = function(action) {
 };
 
 Game.prototype.moveAll = function(action) {  
+  this.bg.move();
 };
 
 Game.prototype.checkGameOver = function() {
